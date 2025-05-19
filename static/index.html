@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AicadesAI - Modern IDE</title>
+    <link rel="stylesheet" href="css/modern.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="img/logo.png" alt="AicadesAI Logo">
+                <span>AicadesAI</span>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item active" data-target="code-panel">
+                    <i class="fas fa-code"></i>
+                    <span>Code</span>
+                </div>
+                <div class="nav-item" data-target="chat-panel">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Chat</span>
+                </div>
+                <div class="nav-item" data-target="settings-panel">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+            </nav>
+            <div class="explorer">
+                <div class="explorer-header">
+                    <span>EXPLORER</span>
+                    <div class="explorer-actions">
+                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-folder-plus"></i>
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>
+                <div class="file-explorer">
+                    <div class="folder">
+                        <div class="folder-name">
+                            <i class="fas fa-folder"></i>
+                            <span>src</span>
+                        </div>
+                        <div class="folder-contents">
+                            <div class="file" data-filename="index.html">
+                                <i class="fab fa-html5"></i>
+                                <span>index.html</span>
+                            </div>
+                            <div class="file" data-filename="style.css">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>style.css</span>
+                            </div>
+                            <div class="file" data-filename="main.js">
+                                <i class="fab fa-js"></i>
+                                <span>main.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="folder">
+                        <div class="folder-name">
+                            <i class="fas fa-folder"></i>
+                            <span>assets</span>
+                        </div>
+                        <div class="folder-contents">
+                            <div class="file" data-filename="image.png">
+                                <i class="far fa-file-image"></i>
+                                <span>image.png</span>
+                            </div>
+                            <div class="file" data-filename="data.json">
+                                <i class="far fa-file-code"></i>
+                                <span>data.json</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Loading Overlay -->
+            <div class="loading-overlay">
+                <div class="spinner"></div>
+            </div>
+            
+            <!-- Code Panel -->
+            <div id="code-panel" class="content-panel active">
+                <div class="file-tabs">
+                    <div class="file-tab active" data-filename="index.html">
+                        <i class="fab fa-html5"></i>
+                        <span>index.html</span>
+                        <i class="fas fa-times close-tab"></i>
+                    </div>
+                    <div class="new-tab">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="editor">
+                    <div class="line-numbers"></div>
+                    <textarea id="code-input" spellcheck="false"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+</body>
+</html></textarea>
+                </div>
+                
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span>TERMINAL</span>
+                        <button class="run-button">
+                            <i class="fas fa-play"></i>
+                            Run
+                        </button>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="output-content">
+                            Welcome to AicadesAI Terminal
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Panel -->
+            <div id="chat-panel" class="content-panel">
+                <div class="chat-header">
+                    <h2>AI Assistant</h2>
+                </div>
+                <div class="chat-messages">
+                    <div class="message message-assistant">
+                        Hello! I'm your AI coding assistant. How can I help you with your project today?
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <textarea id="chat-input" placeholder="Ask me anything about coding..."></textarea>
+                    <button>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Settings Panel -->
+            <div id="settings-panel" class="content-panel">
+                <div class="settings-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-section">
+                        <h3>Editor Settings</h3>
+                        <div class="setting-item">
+                            <label for="font-size">Font Size</label>
+                            <select id="font-size">
+                                <option value="12">12px</option>
+                                <option value="14" selected>14px</option>
+                                <option value="16">16px</option>
+                                <option value="18">18px</option>
+                                <option value="20">20px</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="tab-size">Tab Size</label>
+                            <select id="tab-size">
+                                <option value="2">2 spaces</option>
+                                <option value="4" selected>4 spaces</option>
+                                <option value="8">8 spaces</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="auto-save">Auto Save</label>
+                            <select id="auto-save">
+                                <option value="off">Off</option>
+                                <option value="on" selected>On</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>AI Settings</h3>
+                        <div class="setting-item">
+                            <label for="ai-model">AI Model</label>
+                            <select id="ai-model">
+                                <option value="gpt-3.5">GPT-3.5</option>
+                                <option value="gpt-4" selected>GPT-4</option>
+                                <option value="claude-3">Claude 3</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="response-length">Response Length</label>
+                            <select id="response-length">
+                                <option value="concise">Concise</option>
+                                <option value="balanced" selected>Balanced</option>
+                                <option value="detailed">Detailed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html> 

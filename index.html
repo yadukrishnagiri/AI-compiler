@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aicades IDE</title>
+    <link rel="stylesheet" href="static/css/modern.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Aicades - A modern, AI-enhanced integrated development environment">
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="static/images/logo.svg" alt="Aicades" class="logo-img">
+                <span class="logo-text">Aicades</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-panel="editor-panel">
+                    <i class="fas fa-code"></i>
+                    <span class="nav-label">Editor</span>
+                </div>
+                <div class="nav-item" data-panel="explorer-panel">
+                    <i class="fas fa-folder"></i>
+                    <span class="nav-label">Explorer</span>
+                </div>
+                <div class="nav-item" data-panel="terminal-panel">
+                    <i class="fas fa-terminal"></i>
+                    <span class="nav-label">Terminal</span>
+                </div>
+                <div class="nav-item" data-panel="chat-panel">
+                    <i class="fas fa-comment-alt"></i>
+                    <span class="nav-label">AI Chat</span>
+                </div>
+                <div class="nav-item" data-panel="settings-panel">
+                    <i class="fas fa-cog"></i>
+                    <span class="nav-label">Settings</span>
+                </div>
+            </nav>
+            <div class="theme-toggle-container">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- File Explorer Panel -->
+            <div id="explorer-panel" class="content-panel">
+                <div class="panel-header">
+                    <h2>File Explorer</h2>
+                    <div class="actions">
+                        <button class="new-file-btn"><i class="fas fa-plus"></i> New File</button>
+                    </div>
+                </div>
+                <div class="file-explorer">
+                    <div class="folder">
+                        <div class="folder-name">
+                            <i class="fas fa-folder-open"></i>
+                            <span>Project</span>
+                        </div>
+                        <div class="folder-contents">
+                            <div class="folder">
+                                <div class="folder-name">
+                                    <i class="fas fa-folder"></i>
+                                    <span>src</span>
+                                </div>
+                                <div class="folder-contents" style="display: none;">
+                                    <div class="file">
+                                        <i class="fas fa-file-code"></i>
+                                        <span>main.js</span>
+                                    </div>
+                                    <div class="file">
+                                        <i class="fas fa-file-code"></i>
+                                        <span>utils.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="folder">
+                                <div class="folder-name">
+                                    <i class="fas fa-folder"></i>
+                                    <span>static</span>
+                                </div>
+                                <div class="folder-contents" style="display: none;">
+                                    <div class="folder">
+                                        <div class="folder-name">
+                                            <i class="fas fa-folder"></i>
+                                            <span>css</span>
+                                        </div>
+                                        <div class="folder-contents" style="display: none;">
+                                            <div class="file">
+                                                <i class="fas fa-file-code"></i>
+                                                <span>modern.css</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="folder">
+                                        <div class="folder-name">
+                                            <i class="fas fa-folder"></i>
+                                            <span>js</span>
+                                        </div>
+                                        <div class="folder-contents" style="display: none;">
+                                            <div class="file">
+                                                <i class="fas fa-file-code"></i>
+                                                <span>script.js</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="file">
+                                <i class="fas fa-file-code"></i>
+                                <span>index.html</span>
+                            </div>
+                            <div class="file">
+                                <i class="fas fa-file-alt"></i>
+                                <span>README.md</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editor Panel -->
+            <div id="editor-panel" class="content-panel active">
+                <div class="file-tabs">
+                    <div class="file-tab active">
+                        <span>index.html</span>
+                        <button class="close-tab"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="file-tab">
+                        <span>script.js</span>
+                        <button class="close-tab"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="code-editor">
+                    <div class="line-numbers"></div>
+                    <textarea id="code-input" spellcheck="false"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aicades IDE</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Welcome to Aicades IDE</p>
+    <script src="script.js"></script>
+</body>
+</html></textarea>
+                </div>
+                <div class="editor-actions">
+                    <button class="run-button"><i class="fas fa-play"></i> Run</button>
+                    <button class="debug-button"><i class="fas fa-bug"></i> Debug</button>
+                    <button class="format-button"><i class="fas fa-align-left"></i> Format</button>
+                </div>
+            </div>
+
+            <!-- Terminal Panel -->
+            <div id="terminal-panel" class="content-panel">
+                <div class="panel-header">
+                    <h2>Terminal</h2>
+                    <div class="actions">
+                        <button class="clear-btn"><i class="fas fa-trash"></i> Clear</button>
+                    </div>
+                </div>
+                <div class="terminal-content">
+                    <div>$ Welcome to Aicades Terminal</div>
+                    <div>$ Type 'help' for a list of commands</div>
+                </div>
+            </div>
+
+            <!-- Chat Panel -->
+            <div id="chat-panel" class="content-panel">
+                <div class="panel-header">
+                    <h2>AI Assistant</h2>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message message-assistant">
+                            Hello! I'm your AI coding assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <textarea id="chat-input" placeholder="Ask me anything about coding..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div id="settings-panel" class="content-panel">
+                <div class="panel-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-group">
+                        <h3>Appearance</h3>
+                        <div class="setting-item">
+                            <label for="font-size">Font Size</label>
+                            <select id="font-size">
+                                <option value="12">12px</option>
+                                <option value="14" selected>14px</option>
+                                <option value="16">16px</option>
+                                <option value="18">18px</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="font-family">Font Family</label>
+                            <select id="font-family">
+                                <option value="monospace" selected>Monospace</option>
+                                <option value="consolas">Consolas</option>
+                                <option value="fira-code">Fira Code</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Editor</h3>
+                        <div class="setting-item">
+                            <label>Auto Save</label>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>Line Numbers</label>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>Tab Size</label>
+                            <select>
+                                <option value="2">2 spaces</option>
+                                <option value="4" selected>4 spaces</option>
+                                <option value="8">8 spaces</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>About</h3>
+                        <div class="about-info">
+                            <p>Aicades IDE v1.0.0</p>
+                            <p>A modern, AI-enhanced IDE</p>
+                            <p>&copy; 2023 Aicades</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="static/js/script.js"></script>
+</body>
+</html> 
