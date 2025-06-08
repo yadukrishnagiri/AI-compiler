@@ -24,10 +24,10 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 # Configure Gemini AI
-genai.configure(api_key=os.getenv("GEMINI_API_KEY", "AIzaSyB1PM-ifUTHYEKDIBwVwu3AHRNfE9ccIiU"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Configure Groq API
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama3-70b-8192")
 USE_GROQ = True  # Enable Groq API
